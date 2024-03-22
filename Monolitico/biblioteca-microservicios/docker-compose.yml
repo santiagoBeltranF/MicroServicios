@@ -1,0 +1,31 @@
+version: '3.1'
+
+volumes:
+  biblioteca_db:
+
+services:
+
+  app:
+    image: 'biblioteca'
+    container_name: app
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/biblioteca
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+
+  db:
+    image: 'mysql:8.0.34'
+    container_name: db
+    volumes:
+      - biblioteca_db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=biblioteca
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3307:3306"
