@@ -42,12 +42,16 @@ public class AutorServicio {
 
     private Autor convertir(AutorDTO autor){
 
-        Autor nuevo = Autor.builder()
+   /*     Autor nuevo = Autor.builder()
                 .id(autor.id())
                 .nombre(autor.nombre())
-                .build();
+               .build(); */
 
-        return nuevo;
+        Autor nuevo = new Autor();
+        nuevo.setId(autor.id());
+        nuevo.setNombre(autor.nombre());
+
+        return null;
     }
 
 }

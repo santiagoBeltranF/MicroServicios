@@ -4,6 +4,7 @@ volumes:
   mysql_db_1:
   mysql_db_2:
   mongo_db:
+  keycloak_data:
 
 services:
 
@@ -115,3 +116,17 @@ services:
       eureka.client.service-url.defaultZone: http://eureka-server:8761/eureka
     links:
       - eureka-server
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.0.2
+    container_name: keycloak
+    ports:
+      - "9090:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - keycloak_data:/opt/keycloak/data/
+    command:
+      - start-dev
+    restart: unless-stopped
