@@ -1,3 +1,5 @@
+package co.edu.eam.biblioteca.controller;
+
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
