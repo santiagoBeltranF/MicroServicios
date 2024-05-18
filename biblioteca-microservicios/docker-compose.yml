@@ -65,6 +65,8 @@ services:
       - "8089:8089"
     environment:
       eureka.client.service-url.defaultZone: http://eureka-server:8761/eureka
+      spring.security.oauth2.resourceserver.jwt.issuer-uri=http: //keycloak:8080/realms/tutorial-api
+      spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http: //keycloak:8080/realms/tutorial-api/protocol/openid-connect/certs
     links:
       - eureka-server
 

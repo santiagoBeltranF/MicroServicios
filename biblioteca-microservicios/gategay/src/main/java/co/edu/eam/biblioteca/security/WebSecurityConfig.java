@@ -23,6 +23,9 @@ public class WebSecurityConfig {
                         e.pathMatchers("/api/test/anonymous").permitAll()
                                 .pathMatchers("/api/test/admin").hasRole(ADMIN)
                                 .pathMatchers("/api/test/user").hasAnyRole(ADMIN, USER)
+                                .pathMatchers("/api/libros/**").hasRole(ADMIN) // Endpoints de Libros
+                                .pathMatchers("/api/clientes/**").hasRole(ADMIN) // Endpoints de Clientes
+                                .pathMatchers("/api/prestamos/**").hasAnyRole(ADMIN, USER) // Endpoints de Préstamos
                                 .anyExchange().authenticated());
 
         http.oauth2ResourceServer()
@@ -32,3 +35,4 @@ public class WebSecurityConfig {
         return http.build();
     }
 }
+
